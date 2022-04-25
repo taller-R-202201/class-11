@@ -7,11 +7,10 @@
 # initial configuration
 rm(list=ls())
 require(pacman) # require pacman
-p_load(tidyverse,rio,sf,leaflet,png,grid,tidycensus,viridis, # require and/or install packages
+p_load(tidyverse,rio,sf,leaflet,viridis, # require and/or install packages
        osmdata, # API Open Street Maps
        ggmap,   # API Google Maps
        ggsn,    # Barras de escalas
-       gstat,   # Estimate semivariogram
        gtools)  # Funcion quantcut
 
 #==== Hoy veremos ====# 

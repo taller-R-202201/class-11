@@ -31,7 +31,7 @@ vignette("sf5")
 ## geometry
 
 #=== 1.2. load data ===#
-bog = import("input/Median Housing Values Bogota.rds")
+bog = st_read("input/Median Housing Values Bogota.rds")
 bog$mhv_q = quantcut(bog$mhv/1000000)
 
 #=== 1.3.1. plot basic map ===#

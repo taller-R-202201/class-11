@@ -31,12 +31,12 @@ vignette("sf5")
 ## geometry
 
 #=== 1.2. load data ===#
-bog = st_read("input/Median Housing Values Bogota.rds")
+bog = st_read("input/Bogota MHV.shp")
 bog$mhv_q = quantcut(bog$mhv/1000000)
-
+# bog$mhv_q = quantcut(rnorm(9518))
 #=== 1.3.1. plot basic map ===#
 ggplot(data=bog) + 
-geom_sf(fill="orange" , col="black" , size=0.3) 
+geom_sf(fill="orange" , col="black" , size=0.1) 
 
 #=== 1.3.2. mapping ===#
 p = ggplot(data=bog) + 
@@ -113,6 +113,10 @@ street = street$osm_lines %>% select(osm_id,name)
 street = street %>%
          subset(str_detect(name,"Avenida")==T | str_detect(name,"TransMilenio")==T)
 
+leaflet() %>%
+addTiles() %>%
+addPolylines(data=street,col="green")
+
 #==================#
 # [3.] Google Maps #
 #==================#
@@ -143,6 +147,7 @@ ips = st_as_sf(x=ips , coords=c("lon_google","lat_google"), crs=4326)
 leaflet() %>%
 addTiles() %>%
 addCircleMarkers(data=ips , label=ips$nombre_prestador)
+
 
 #=====================#
 # Para seguir leyendo #
